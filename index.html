@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Practice: Food Vocabulary</title>
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --secondary: #1976d2;
+            --background: #f4f6f8;
+            --surface: #ffffff;
+            --text: #333333;
+            --success: #388e3c;
+            --error: #d32f2f;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: var(--secondary);
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        h3 {
+            color: #424242;
+        }
+
+        .passage {
+            background-color: #e3f2fd;
+            border-left: 5px solid var(--secondary);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+            font-size: 1.1em;
+        }
+
+        .question-block {
+            background: #fafafa;
+            border: 1px solid #eeeeee;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        select, input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select {
+            width: auto;
+            min-width: 200px;
+        }
+
+        .radio-group label {
+            display: block;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .radio-group label:hover {
+            background: #e0e0e0;
+        }
+
+        .btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1em;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background-color: #1565c0;
+        }
+
+        .btn-reveal {
+            background-color: #757575;
+            font-size: 0.9em;
+            padding: 8px 16px;
+        }
+
+        .btn-reveal:hover {
+            background-color: #616161;
+        }
+
+        .btn-submit-all {
+            background-color: var(--primary);
+            width: 100%;
+            font-size: 1.3em;
+            padding: 15px;
+            margin-top: 40px;
+        }
+
+        .btn-submit-all:hover {
+            background-color: #b71c1c;
+        }
+
+        .model-answer {
+            display: none;
+            background-color: #e8f5e9;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .feedback-icon {
+            font-weight: bold;
+            margin-left: 10px;
+            display: none;
+        }
+
+        .correct { border: 2px solid var(--success) !important; background-color: #f1f8e9; }
+        .incorrect { border: 2px solid var(--error) !important; background-color: #ffebee; }
+        
+        .correct-icon { color: var(--success); display: inline; }
+        .incorrect-icon { color: var(--error); display: inline; }
+
+        .score-board {
+            display: none;
+            text-align: center;
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .word-count {
+            font-size: 0.9em;
+            color: #666;
+            text-align: right;
+            margin-top: 5px;
+        }
+
+        .save-notice {
+            font-size: 0.85em;
+            color: var(--success);
+            text-align: right;
+            margin-top: 2px;
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>📝 IELTS Practice: Food Vocabulary</h1>
+        <p>Test your reading, vocabulary, writing, and speaking skills using advanced food terminology.</p>
+    </header>
+
+    <section>
+        <h2>🔹 PART 1: Reading (Short Passage + Questions)</h2>
+        <div class="passage">
+            <p>In recent years, food culture has changed significantly. In many cities, there is an abundant supply of international cuisine, allowing people to explore new flavours. While some prefer savory dishes with bold spices, others enjoy more mild meals that are easier on the palate.</p>
+            <p>However, not all food is of high quality. Poor storage can lead to spoilage, especially for perishable items like dairy and seafood. For example, milk can become soured, and bread may turn moldy if not consumed in time.</p>
+            <p>Despite these challenges, many people still enjoy cooking at home. Some like to savor every bite, while others quickly devour their meals after a long day. Cooking techniques such as stirring sauces properly or allowing chocolate to melt evenly can greatly improve the final result.</p>
+            <p>Overall, food remains an essential and enjoyable part of daily life, whether portions are generous or meager.</p>
+        </div>
+
+        <div class="question-block">
+            <h3>1. Multiple Choice</h3>
+            <p>What is one advantage of modern food culture?</p>
+            <div class="radio-group" id="q1-group">
+                <label><input type="radio" name="q1" value="A"> A. Less food variety</label>
+                <label><input type="radio" name="q1" value="B"> B. More international options</label>
+                <label><input type="radio" name="q1" value="C"> C. Smaller portions</label>
+                <label><input type="radio" name="q1" value="D"> D. Fewer ingredients</label>
+            </div>
+            <span id="fb-q1" class="feedback-icon"></span>
+        </div>
+
+        <div class="question-block">
+            <h3>2. True / False / Not Given</h3>
+            <table>
+                <tr>
+                    <td>a. All restaurants provide high-quality food.</td>
+                    <td>
+                        <select id="q2a">
+                            <option value="">Select...</option>
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                            <option value="Not Given">Not Given</option>
+                        </select>
+                        <span id="fb-q2a" class="feedback-icon"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>b. Dairy products are perishable.</td>
+                    <td>
+                        <select id="q2b">
+                            <option value="">Select...</option>
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                            <option value="Not Given">Not Given</option>
+                        </select>
+                        <span id="fb-q2b" class="feedback-icon"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>c. People no longer enjoy cooking at home.</td>
+                    <td>
+                        <select id="q2c">
+                            <option value="">Select...</option>
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                            <option value="Not Given">Not Given</option>
+                        </select>
+                        <span id="fb-q2c" class="feedback-icon"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="question-block">
+            <h3>3. Vocabulary Match</h3>
+            <table>
+                <tr>
+                    <td>1. Devour</td>
+                    <td>
+                        <select id="q3-1">
+                            <option value="">Select meaning...</option>
+                            <option value="a">a. go bad</option>
+                            <option value="b">b. eat quickly</option>
+                            <option value="c">c. not strong</option>
+                        </select>
+                        <span id="fb-q3-1" class="feedback-icon"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2. Spoilage</td>
+                    <td>
+                        <select id="q3-2">
+                            <option value="">Select meaning...</option>
+                            <option value="a">a. go bad</option>
+                            <option value="b">b. eat quickly</option>
+                            <option value="c">c. not strong</option>
+                        </select>
+                        <span id="fb-q3-2" class="feedback-icon"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3. Mild</td>
+                    <td>
+                        <select id="q3-3">
+                            <option value="">Select meaning...</option>
+                            <option value="a">a. go bad</option>
+                            <option value="b">b. eat quickly</option>
+                            <option value="c">c. not strong</option>
+                        </select>
+                        <span id="fb-q3-3" class="feedback-icon"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <h2>🔹 PART 2: Use of English (Vocabulary Practice)</h2>
+        
+        <div class="question-block">
+            <h3>A. Fill in the blanks</h3>
+            <p><em>Options: zesty, munch, spoilage, scant, savory</em></p>
+            <ol>
+                <li>The soup had a <select id="q4-1"><option value="">---</option><option value="savory">savory</option><option value="spoilage">spoilage</option><option value="scant">scant</option><option value="munch">munch</option><option value="zesty">zesty</option></select> flavor with herbs and spices. <span id="fb-q4-1" class="feedback-icon"></span></li>
+                <br>
+                <li>The food went bad due to <select id="q4-2"><option value="">---</option><option value="savory">savory</option><option value="spoilage">spoilage</option><option value="scant">scant</option><option value="munch">munch</option><option value="zesty">zesty</option></select>. <span id="fb-q4-2" class="feedback-icon"></span></li>
+                <br>
+                <li>She only had a <select id="q4-3"><option value="">---</option><option value="savory">savory</option><option value="spoilage">spoilage</option><option value="scant">scant</option><option value="munch">munch</option><option value="zesty">zesty</option></select> amount of rice left. <span id="fb-q4-3" class="feedback-icon"></span></li>
+                <br>
+                <li>He likes to <select id="q4-4"><option value="">---</option><option value="savory">savory</option><option value="spoilage">spoilage</option><option value="scant">scant</option><option value="munch">munch</option><option value="zesty">zesty</option></select> on snacks while studying. <span id="fb-q4-4" class="feedback-icon"></span></li>
+                <br>
+                <li>The lemonade was very <select id="q4-5"><option value="">---</option><option value="savory">savory</option><option value="spoilage">spoilage</option><option value="scant">scant</option><option value="munch">munch</option><option value="zesty">zesty</option></select> and refreshing. <span id="fb-q4-5" class="feedback-icon"></span></li>
+            </ol>
+        </div>
+
+        <div class="question-block">
+            <h3>B. Sentence Transformation</h3>
+            <p>Rewrite using the word in brackets.</p>
+            
+            <p>1. He ate the pizza very quickly. <strong>(devour)</strong></p>
+            <input type="text" id="st1" oninput="saveInput('st1')" placeholder="Type your sentence here...">
+            <button class="btn btn-reveal" onclick="toggleVisibility('ans-st-1')">Show Answer</button>
+            <div id="ans-st-1" class="model-answer">He <strong>devoured</strong> the pizza.</div>
+
+            <p>2. The portions were very small. <strong>(meager)</strong></p>
+            <input type="text" id="st2" oninput="saveInput('st2')" placeholder="Type your sentence here...">
+            <button class="btn btn-reveal" onclick="toggleVisibility('ans-st-2')">Show Answer</button>
+            <div id="ans-st-2" class="model-answer">The portions were <strong>meager</strong>.</div>
+
+            <p>3. The chef enjoyed every bite. <strong>(savor)</strong></p>
+            <input type="text" id="st3" oninput="saveInput('st3')" placeholder="Type your sentence here...">
+            <button class="btn btn-reveal" onclick="toggleVisibility('ans-st-3')">Show Answer</button>
+            <div id="ans-st-3" class="model-answer">The chef <strong>savored</strong> every bite.</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>🔹 PART 3: Writing Task 1 (Short Response)</h2>
+        <div class="question-block">
+            <h3>Topic: Describe your eating habits. (Target: ~120 words)</h3>
+            <p>👉 Include: Types of food (e.g. grains, dairy, seafood), Taste preferences (mild, bitter, zesty, etc.), Eating habits (munch, devour, savor), Food condition awareness (perishable, spoilage, etc.)</p>
+            <textarea id="wt1" oninput="updateWordCount('wt1', 'wc1'); saveInput('wt1')" placeholder="Start typing your response here..."></textarea>
+            <div class="word-count">Word count: <span id="wc1">0</span></div>
+            <div id="save-msg-wt1" class="save-notice">Saved locally</div>
+            <button class="btn btn-reveal" onclick="toggleVisibility('ans-wt1')">Show Model Answer</button>
+            <div id="ans-wt1" class="model-answer">
+                <strong>Model Answer:</strong><br>
+                My eating habits rely heavily on a balance of grains, fresh produce, and seafood. I tend to prefer savory and zesty flavors over mild ones, often adding spices to my meals. Because I buy a lot of fresh, perishable ingredients like dairy and fish, I am very mindful of proper storage to prevent spoilage. During the workday, I usually just munch on quick snacks or devour a sandwich because I have limited time. However, on weekends, I prefer to take my time and savor every bite of a home-cooked meal. Overall, I try to ensure my portions are generous but healthy, minimizing processed foods. <em>(108 words)</em>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>🔹 PART 4: Writing Task 2 (Essay)</h2>
+        <div class="question-block">
+            <h3>Topic: Some people believe that modern lifestyles have led to poorer eating habits, while others think food quality has improved. Discuss both views and give your opinion. (Target: ~250 words)</h3>
+            <p>👉 Try to use at least 8 vocabulary words from the list, and provide examples.</p>
+            <textarea id="wt2" oninput="updateWordCount('wt2', 'wc2'); saveInput('wt2')" placeholder="Start typing your essay here..."></textarea>
+            <div class="word-count">Word count: <span id="wc2">0</span></div>
+            <div id="save-msg-wt2" class="save-notice">Saved locally</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>🔹 PART 5: Speaking Practice</h2>
+        <div class="question-block">
+            <h3>PART 1 (Short answers)</h3>
+            <ul>
+                <li>What kind of food do you usually eat?</li>
+                <li>Do you prefer savory or sweet food?</li>
+                <li>Do you eat generous or small portions?</li>
+            </ul>
+            
+            <h3>PART 2 (Long turn)</h3>
+            <p><strong>Describe a meal you really enjoyed. You should say:</strong></p>
+            <ul>
+                <li>What the meal was</li>
+                <li>Who you ate it with</li>
+                <li>What it tasted like</li>
+                <li>Why you enjoyed it</li>
+            </ul>
+            <p><em>👉 Try to use: delectable, zesty, mild, savor, devour</em></p>
+
+            <h3>PART 3 (Discussion)</h3>
+            <ul>
+                <li>Why do some people prefer mild food while others like strong flavors?</li>
+                <li>How important is food quality today?</li>
+                <li>Do you think processed food increases spoilage or reduces it?</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2>🔹 BONUS: Teacher/Examiner CCQs</h2>
+        <div class="question-block">
+            <p>Test your understanding of the core concepts:</p>
+            <ol>
+                <li>If food is abundant, is there a lot or a little? <br>
+                    <select id="ccq1"><option value="">Select...</option><option value="a lot">A lot</option><option value="a little">A little</option></select>
+                    <span id="fb-ccq1" class="feedback-icon"></span>
+                </li>
+                <li>If something is scant, is it enough? <br>
+                    <select id="ccq2"><option value="">Select...</option><option value="yes">Yes</option><option value="no">No</option></select>
+                    <span id="fb-ccq2" class="feedback-icon"></span>
+                </li>
+                <li>If food is perishable, can it last long? <br>
+                    <select id="ccq3"><option value="">Select...</option><option value="yes">Yes</option><option value="no">No</option></select>
+                    <span id="fb-ccq3" class="feedback-icon"></span>
+                </li>
+                <li>If you devour food, do you eat slowly or quickly? <br>
+                    <select id="ccq4"><option value="">Select...</option><option value="slowly">Slowly</option><option value="quickly">Quickly</option></select>
+                    <span id="fb-ccq4" class="feedback-icon"></span>
+                </li>
+                <li>If food is zesty, is it boring or strong in flavor? <br>
+                    <select id="ccq5"><option value="">Select...</option><option value="boring">Boring</option><option value="strong">Strong</option></select>
+                    <span id="fb-ccq5" class="feedback-icon"></span>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <button class="btn btn-submit-all" onclick="gradeQuiz()">Submit & Calculate Score</button>
+    
+    <div id="final-score" class="score-board">
+        Your Score: <span id="score-text">0/17</span><br>
+        <span style="font-size: 0.6em; font-weight: normal;">(Score applies to auto-graded objective questions only. Review writing/speaking manually.)</span>
+    </div>
+
+</div>
+
+<script>
+    // --- LOCAL STORAGE FUNCTIONS --- //
+    
+    // Load saved data when the page loads
+    window.onload = function() {
+        const textInputs = ['st1', 'st2', 'st3', 'wt1', 'wt2'];
+        
+        textInputs.forEach(id => {
+            const savedValue = localStorage.getItem('ielts_' + id);
+            if (savedValue !== null) {
+                document.getElementById(id).value = savedValue;
+                
+                // Update word counts if it's a textarea
+                if (id === 'wt1') updateWordCount('wt1', 'wc1');
+                if (id === 'wt2') updateWordCount('wt2', 'wc2');
+            }
+        });
+    };
+
+    // Save input to localStorage as user types
+    function saveInput(id) {
+        const val = document.getElementById(id).value;
+        localStorage.setItem('ielts_' + id, val);
+        
+        // Show a brief "Saved locally" message for the large essays
+        const msgBlock = document.getElementById('save-msg-' + id);
+        if (msgBlock) {
+            msgBlock.style.opacity = '1';
+            clearTimeout(msgBlock.timeoutId);
+            msgBlock.timeoutId = setTimeout(() => {
+                msgBlock.style.opacity = '0';
+            }, 2000);
+        }
+    }
+
+    // --- STANDARD QUIZ FUNCTIONS --- //
+
+    function toggleVisibility(id) {
+        const el = document.getElementById(id);
+        if (el.style.display === "block") {
+            el.style.display = "none";
+        } else {
+            el.style.display = "block";
+        }
+    }
+
+    function updateWordCount(fieldId, counterId) {
+        const text = document.getElementById(fieldId).value;
+        const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+        document.getElementById(counterId).innerText = words.length;
+    }
+
+    function setFeedback(elementId, isCorrect, correctAnswer) {
+        const el = document.getElementById(elementId);
+        const fb = document.getElementById("fb-" + elementId);
+        
+        el.classList.remove("correct", "incorrect");
+        if (isCorrect) {
+            el.classList.add("correct");
+            if(fb) {
+                fb.innerHTML = "✔ Correct";
+                fb.className = "feedback-icon correct-icon";
+                fb.style.display = "inline";
+            }
+        } else {
+            el.classList.add("incorrect");
+            if(fb) {
+                fb.innerHTML = "✘ Incorrect (Answer: " + correctAnswer + ")";
+                fb.className = "feedback-icon incorrect-icon";
+                fb.style.display = "inline";
+            }
+        }
+    }
+
+    function gradeQuiz() {
+        let score = 0;
+        const total = 17;
+
+        // Q1
+        const q1 = document.querySelector('input[name="q1"]:checked');
+        const fbQ1 = document.getElementById("fb-q1");
+        if (q1 && q1.value === "B") {
+            score++;
+            fbQ1.innerHTML = "✔ Correct";
+            fbQ1.className = "feedback-icon correct-icon";
+            fbQ1.style.display = "inline";
+        } else {
+            fbQ1.innerHTML = "✘ Incorrect (Answer: B)";
+            fbQ1.className = "feedback-icon incorrect-icon";
+            fbQ1.style.display = "inline";
+        }
+
+        // Q2
+        const q2Answers = { "q2a": "False", "q2b": "True", "q2c": "False" };
+        for (const [id, ans] of Object.entries(q2Answers)) {
+            const val = document.getElementById(id).value;
+            if (val === ans) { score++; setFeedback(id, true, ans); }
+            else { setFeedback(id, false, ans); }
+        }
+
+        // Q3
+        const q3Answers = { "q3-1": "b", "q3-2": "a", "q3-3": "c" };
+        for (const [id, ans] of Object.entries(q3Answers)) {
+            const val = document.getElementById(id).value;
+            if (val === ans) { score++; setFeedback(id, true, ans); }
+            else { setFeedback(id, false, ans); }
+        }
+
+        // Q4 (Fill in the blanks)
+        const q4Answers = { "q4-1": "savory", "q4-2": "spoilage", "q4-3": "scant", "q4-4": "munch", "q4-5": "zesty" };
+        for (const [id, ans] of Object.entries(q4Answers)) {
+            const val = document.getElementById(id).value;
+            if (val === ans) { score++; setFeedback(id, true, ans); }
+            else { setFeedback(id, false, ans); }
+        }
+
+        // CCQs
+        const ccqAnswers = { "ccq1": "a lot", "ccq2": "no", "ccq3": "no", "ccq4": "quickly", "ccq5": "strong" };
+        for (const [id, ans] of Object.entries(ccqAnswers)) {
+            const val = document.getElementById(id).value;
+            if (val === ans) { score++; setFeedback(id, true, ans); }
+            else { setFeedback(id, false, ans); }
+        }
+
+        // Show Score
+        const scoreBoard = document.getElementById("final-score");
+        document.getElementById("score-text").innerText = score + " / " + total;
+        scoreBoard.style.display = "block";
+        
+        // Scroll to score
+        scoreBoard.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
