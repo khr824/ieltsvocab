@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Vocabulary: Food Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <title>IELTS Food Vocabulary Interactive Worksheet</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #4a90e2;
-            --success: #48bb78;
-            --error: #f56565;
-            --bg: #f7fafc;
-            --text: #2d3748;
+            --primary: #2d5a27;
+            --secondary: #f4f1de;
+            --accent: #e07a5f;
+            --correct: #81b29a;
+            --wrong: #f2cc8f;
+            --text: #3d405b;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--secondary);
             color: var(--text);
             line-height: 1.6;
             margin: 0;
@@ -29,162 +30,132 @@
             background: white;
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        h1 { color: var(--primary); text-align: center; margin-bottom: 10px; }
-        p.subtitle { text-align: center; color: #718096; margin-bottom: 40px; }
+        h1 { color: var(--primary); text-align: center; border-bottom: 3px solid var(--accent); padding-bottom: 10px; }
+        h2 { color: var(--accent); margin-top: 30px; border-left: 5px solid var(--primary); padding-left: 10px; }
+        
+        .section { margin-bottom: 40px; padding: 20px; border-radius: 8px; background: #fdfcf0; }
 
-        section { margin-bottom: 40px; padding: 20px; border-bottom: 1px solid #edf2f7; }
-        h2 { color: var(--primary); font-size: 1.2rem; border-left: 4px solid var(--primary); padding-left: 10px; }
-
-        /* Question Styling */
-        .question-block { margin: 15px 0; }
+        /* Question Styles */
+        .question-block { margin-bottom: 15px; padding: 10px; border-radius: 5px; transition: all 0.3s; }
+        
         select, input[type="text"] {
             padding: 8px;
-            border: 2px solid #e2e8f0;
-            border-radius: 6px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
             outline: none;
-            transition: all 0.3s;
-            font-family: inherit;
         }
 
-        /* Feedback Animations */
-        .correct { 
-            border-color: var(--success) !important; 
-            background-color: #f0fff4;
-            animation: pulse 0.5s ease-in-out;
-        }
-        .incorrect { 
-            border-color: var(--error) !important; 
-            background-color: #fff5f5;
-            animation: shake 0.4s ease-in-out;
-        }
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+        
+        label { cursor: pointer; display: block; padding: 10px; background: white; border: 1px solid #ddd; border-radius: 5px; }
+        input[type="radio"] { margin-right: 10px; }
 
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
+        /* Animation Classes */
+        .correct-anim { background-color: var(--correct) !important; animation: pulse 0.5s; color: white; }
+        .wrong-anim { background-color: var(--wrong) !important; animation: shakeX 0.5s; }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* Layout for Parts */
-        .grid-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .label { flex: 1; }
-
-        /* Buttons */
-        .btn-container { text-align: center; margin-top: 30px; }
-        button {
+        /* Footer & Score */
+        #score-area {
+            text-align: center;
+            margin-top: 40px;
+            display: none;
+            padding: 20px;
             background: var(--primary);
             color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        button:hover { background: #357abd; transform: translateY(-2px); }
-
-        #score-display {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            background: #ebf8ff;
             border-radius: 10px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.2rem;
         }
+
+        button.main-btn {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button.main-btn:hover { transform: scale(1.02); background: #d6684d; }
+
+        .matching-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>IELTS Vocabulary: Food</h1>
-    <p class="subtitle">Objective: Consolidate food-related vocabulary</p>
+    <h1>IELTS Food Vocabulary</h1>
+    <p style="text-align: center;">Practice and consolidate your understanding of food-related terms.</p>
 
-    <section id="part1">
-        <h2>Part 1: Matching</h2>
-        <p>Match the words to their meanings (a, b, c, d, or e):</p>
+    <div class="section" id="part1">
+        <h2>Part 1: Matching (Food Quantities)</h2>
+        <div class="matching-row" data-ans="d"><span>1. Abundant</span> <select><option value="">Select...</option><option value="a">a. tiny amount</option><option value="d">d. large quantity</option></select></div>
+        <div class="matching-row" data-ans="c"><span>2. Scant</span> <select><option value="">Select...</option><option value="c">c. not enough</option><option value="b">b. more than enough</option></select></div>
+        <div class="matching-row" data-ans="e"><span>3. Generous</span> <select><option value="">Select...</option><option value="e">e. larger than usual</option><option value="a">a. tiny amount</option></select></div>
         
-        <div class="grid-row">
-            <span class="label">1. Abundant (Quantity)</span>
-            <select class="quiz-input" data-ans="d">
-                <option value="">Select...</option>
-                <option value="a">a. very small amount</option>
-                <option value="b">b. more than enough</option>
-                <option value="c">c. not enough</option>
-                <option value="d">d. large in quantity</option>
-            </select>
-        </div>
-        <div class="grid-row">
-            <span class="label">12. Perishable (Condition)</span>
-            <select class="quiz-input" data-ans="a">
-                <option value="">Select...</option>
-                <option value="a">a. able to go bad quickly</option>
-                <option value="b">b. covered in fungus</option>
-                <option value="c">c. food becoming bad</option>
-            </select>
-        </div>
-    </section>
+        <h2>Part 1: Matching (Condition)</h2>
+        <div class="matching-row" data-ans="a"><span>11. Perishable</span> <select><option value="">Select...</option><option value="a">a. goes bad quickly</option><option value="b">b. covered in fungus</option></select></div>
+    </div>
 
-    <section id="part2">
+    <div class="section">
         <h2>Part 2: Multiple Choice</h2>
-        <div class="question-block">
+        <div class="question-block" data-type="mcq" data-ans="b">
             <p>1. If food is <strong>meager</strong>, it is:</p>
-            <label><input type="radio" name="q2_1" value="b" class="quiz-radio"> b. small</label><br>
-            <label><input type="radio" name="q2_1" value="a" class="quiz-radio"> a. large</label>
+            <div class="options-grid">
+                <label><input type="radio" name="q1" value="a"> a. large</label>
+                <label><input type="radio" name="q1" value="b"> b. small</label>
+                <label><input type="radio" name="q1" value="c"> c. sweet</label>
+            </div>
         </div>
-        <div class="question-block">
-            <p>2. To <strong>quench</strong> thirst means to:</p>
-            <label><input type="radio" name="q2_2" value="c" class="quiz-radio"> c. satisfy it</label><br>
-            <label><input type="radio" name="q2_2" value="a" class="quiz-radio"> a. increase it</label>
-        </div>
-    </section>
 
-    <section id="part3">
+        <div class="question-block" data-type="mcq" data-ans="c">
+            <p>2. Dairy refers to:</p>
+            <div class="options-grid">
+                <label><input type="radio" name="q2" value="a"> a. vegetables</label>
+                <label><input type="radio" name="q2" value="b"> b. meat</label>
+                <label><input type="radio" name="q2" value="c"> c. milk products</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
         <h2>Part 3: Gap Fill</h2>
-        <p><em>Bank: savor, grains, perishable, zesty, soured, savory, mild, munch, scant, plentiful</em></p>
-        <div class="question-block">
-            1. The farmer had a <input type="text" class="quiz-input" data-ans="plentiful"> harvest this year.
+        <p><em>Word bank: savor, grains, perishable, zesty, soured, savory, mild, munch, scant, plentiful</em></p>
+        <div class="question-block" data-type="fill" data-ans="plentiful">
+            1. The farmer had a <input type="text" placeholder="..."> harvest this year.
         </div>
-        <div class="question-block">
-            2. The milk has <input type="text" class="quiz-input" data-ans="soured"> and cannot be used.
+        <div class="question-block" data-type="fill" data-ans="soured">
+            2. The milk has <input type="text" placeholder="..."> and cannot be used.
         </div>
-    </section>
+        <div class="question-block" data-type="fill" data-ans="munch">
+            3. She likes to <input type="text" placeholder="..."> on snacks while watching TV.
+        </div>
+    </div>
 
-    <section id="part4">
-        <h2>Part 4: Odd One Out</h2>
-        <div class="question-block">
-            1. abundant – plentiful – <select class="quiz-input" data-ans="meager">
-                <option value="">Select Odd Word</option>
-                <option value="abundant">abundant</option>
-                <option value="plentiful">plentiful</option>
-                <option value="meager">meager</option>
-            </select> – generous
+    <div class="section">
+        <h2>Part 5: Quick Check</h2>
+        <div class="question-block" data-type="fill" data-ans="perishable">
+            Food that goes bad quickly: <input type="text">
         </div>
-    </section>
+        <div class="question-block" data-type="fill" data-ans="devour">
+            Eating very fast: <input type="text">
+        </div>
+    </div>
 
-    <section id="part5">
-        <h2>Part 5: Quick Check (One Word)</h2>
-        <div class="question-block">
-            1. Eating very fast: <input type="text" class="quiz-input" data-ans="devour">
-        </div>
-        <div class="question-block">
-            2. Food from the ocean: <input type="text" class="quiz-input" data-ans="seafood">
-        </div>
-    </section>
+    <button class="main-btn" onclick="calculateScore()">Finish & See Overall Score</button>
 
-    <div class="btn-container">
-        <button onclick="calculateScore()">Show Overall Score</button>
-        <div id="score-display"></div>
+    <div id="score-area" class="animate__animated">
+        <h2 style="color: white; border: none;">Your Results</h2>
+        <p id="score-text" style="font-size: 2rem; font-weight: bold;"></p>
+        <p id="feedback-text"></p>
+        <button onclick="location.reload()" style="background: white; color: var(--primary); padding: 10px; border: none; border-radius: 5px; cursor: pointer;">Try Again</button>
     </div>
 </div>
 
@@ -193,47 +164,54 @@
         let score = 0;
         let total = 0;
 
-        // Check Text Inputs and Selects
-        const inputs = document.querySelectorAll('.quiz-input');
+        // Check Matching & Gap Fills
+        const inputs = document.querySelectorAll('select, input[type="text"]');
         inputs.forEach(input => {
             total++;
+            const parent = input.closest('div');
+            const correctAns = parent.getAttribute('data-ans');
             const userAns = input.value.trim().toLowerCase();
-            const correctAns = input.getAttribute('data-ans').toLowerCase();
 
             if (userAns === correctAns) {
                 score++;
-                input.classList.remove('incorrect');
-                input.classList.add('correct');
+                parent.classList.add('correct-anim', 'animate__animated');
+                parent.classList.remove('wrong-anim');
             } else {
-                input.classList.remove('correct');
-                input.classList.add('incorrect');
+                parent.classList.add('wrong-anim', 'animate__animated');
+                parent.classList.remove('correct-anim');
             }
         });
 
-        // Check Radio Buttons
-        const radioGroups = ['q2_1', 'q2_2']; // Add all names here
-        radioGroups.forEach(groupName => {
+        // Check MCQs
+        const mcqs = document.querySelectorAll('.question-block[data-type="mcq"]');
+        mcqs.forEach(mcq => {
             total++;
-            const selected = document.querySelector(`input[name="${groupName}"]:checked`);
-            const allInGroup = document.querySelectorAll(`input[name="${groupName}"]`);
+            const correctAns = mcq.getAttribute('data-ans');
+            const selected = mcq.querySelector('input[type="radio"]:checked');
             
-            // For feedback simplicity, we color the parent label
-            if (selected && selected.value === 'b' || (groupName === 'q2_2' && selected?.value === 'c')) { 
-                // Simplified logic for example: 
-                // In a full app, you'd map answers to names
+            if (selected && selected.value === correctAns) {
                 score++;
-                selected.parentElement.style.color = 'var(--success)';
-            } else if (selected) {
-                selected.parentElement.style.color = 'var(--error)';
+                mcq.classList.add('correct-anim', 'animate__animated');
+            } else {
+                mcq.classList.add('wrong-anim', 'animate__animated');
             }
         });
 
-        const display = document.getElementById('score-display');
-        display.style.display = 'block';
-        display.innerHTML = `Your Score: ${score} / ${total}<br>` + 
-                           (score === total ? "🌟 Perfect! You're a Foodie Expert!" : "Keep practicing!");
+        // Show Score
+        const scoreArea = document.getElementById('score-area');
+        const scoreText = document.getElementById('score-text');
+        scoreArea.style.display = 'block';
+        scoreArea.classList.add('animate__fadeInUp');
+        scoreText.innerText = `${score} / ${total}`;
+
+        let feedback = "";
+        if (score === total) feedback = "Perfect! You're a food vocab expert!";
+        else if (score > total/2) feedback = "Great job! Almost there.";
+        else feedback = "Keep practicing! Review the definitions and try again.";
         
-        display.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('feedback-text').innerText = feedback;
+        
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 </script>
 
