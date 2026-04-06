@@ -1,93 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IELTS Food Vocabulary Practice</title>
-<style>
-body {font-family: Arial, sans-serif; background:#f4f6f9; margin:0; padding:0;}
-.container {max-width:900px; margin:auto; padding:20px;}
-h1 {text-align:center;}
-.section {background:white; padding:20px; margin-bottom:20px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1);} 
-button {padding:10px 15px; border:none; border-radius:8px; background:#4CAF50; color:white; cursor:pointer;}
-button:hover {background:#45a049;}
-.hidden {display:none;}
-.score {font-weight:bold; margin-top:10px;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS Vocabulary Practice: Food & Gastronomy</title>
+    <style>
+        :root {
+            --primary: #2a5d9a;
+            --secondary: #f4f7f9;
+            --accent: #e67e22;
+            --success: #27ae60;
+            --error: #e74c3c;
+            --text: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--secondary);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 0;
+        }
+
+        /* Exercise Styles */
+        .matching-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            align-items: center;
+        }
+
+        select, input[type="text"] {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        .option-group {
+            margin: 10px 0;
+        }
+
+        .odd-one-out button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: 1px solid var(--primary);
+            background: white;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .odd-one-out button.selected {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Results Area */
+        #result-area {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0fff4;
+            border: 2px solid var(--success);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-submit:hover {
+            background: #1e4573;
+        }
+
+        .feedback {
+            font-weight: bold;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .correct { color: var(--success); }
+        .incorrect { color: var(--error); }
+    </style>
 </head>
 <body>
+
 <div class="container">
-<h1>IELTS Food Vocabulary Practice</h1>
+    <h1>IELTS Food Vocabulary Practice</h1>
+    <p>Test your knowledge of quantities, tastes, verbs, and conditions.</p>
 
-<div class="section">
-<h2>Part 2: Multiple Choice</h2>
-<form id="quiz">
+    <div class="section" id="part1">
+        <h2>Part 1: Matching - Quantities</h2>
+        <p>Match the word to its definition.</p>
+        <div class="matching-grid">
+            <div>1. Deficient in quantity; lacking richness.</div>
+            <select class="quiz-input" data-ans="Meager">
+                <option value="">Select...</option>
+                <option value="Abundant">Abundant</option>
+                <option value="Meager">Meager</option>
+                <option value="Scant">Scant</option>
+            </select>
 
-<p>1. If food is meager:</p>
-<input type="radio" name="q1" value="b"> small<br>
-<input type="radio" name="q1" value="a"> large<br>
-<input type="radio" name="q1" value="c"> sweet<br>
+            <div>2. Inadequate amount; barely enough.</div>
+            <select class="quiz-input" data-ans="Scant">
+                <option value="">Select...</option>
+                <option value="Plentiful">Plentiful</option>
+                <option value="Scant">Scant</option>
+                <option value="Generous">Generous</option>
+            </select>
+        </div>
+    </div>
 
-<p>2. Perishable means:</p>
-<input type="radio" name="q2" value="b"> goes bad easily<br>
-<input type="radio" name="q2" value="a"> lasts forever<br>
-<input type="radio" name="q2" value="c"> bitter<br>
+    <div class="section">
+        <h2>Part 2: Multiple Choice - Verbs & Tastes</h2>
+        <div class="question">
+            <p>1. To satisfy one's thirst by drinking is to ______.</p>
+            <div class="option-group">
+                <input type="radio" name="q1" value="Munch"> Munch<br>
+                <input type="radio" name="q1" value="Quench" class="quiz-input" data-ans="Quench"> Quench<br>
+                <input type="radio" name="q1" value="Savor"> Savor
+            </div>
+        </div>
+        <div class="question">
+            <p>2. A taste that is sharp, not sweet, and often found in dark chocolate is ______.</p>
+            <div class="option-group">
+                <input type="radio" name="q2" value="Bitter" class="quiz-input" data-ans="Bitter"> Bitter<br>
+                <input type="radio" name="q2" value="Zesty"> Zesty<br>
+                <input type="radio" name="q2" value="Savory"> Savory
+            </div>
+        </div>
+    </div>
 
-<p>3. Devour means:</p>
-<input type="radio" name="q3" value="b"> eat quickly<br>
-<input type="radio" name="q3" value="a"> eat slowly<br>
-<input type="radio" name="q3" value="c"> ignore food<br>
+    <div class="section odd-one-out">
+        <h2>Part 3: Odd One Out</h2>
+        <p>Select the word that does NOT belong in the group.</p>
+        
+        <div>
+            <p>1. Which is not a type of protein/source?</p>
+            <button type="button" onclick="selectOdd(this, 'group1')" data-val="Legumes">Legumes</button>
+            <button type="button" onclick="selectOdd(this, 'group1')" data-val="Poultry">Poultry</button>
+            <button type="button" onclick="selectOdd(this, 'group1', true)" data-ans="Astringent">Astringent</button>
+            <input type="hidden" class="quiz-input odd-input" id="group1" data-ans="Astringent">
+        </div>
 
-<p>4. Zesty flavor:</p>
-<input type="radio" name="q4" value="b"> strong and fresh<br>
-<input type="radio" name="q4" value="a"> dull<br>
-<input type="radio" name="q4" value="c"> dry<br>
+        <div style="margin-top:20px">
+            <p>2. Which is not related to spoiled food?</p>
+            <button type="button" onclick="selectOdd(this, 'group2')" data-val="Soured">Soured</button>
+            <button type="button" onclick="selectOdd(this, 'group2', true)" data-ans="Delectable">Delectable</button>
+            <button type="button" onclick="selectOdd(this, 'group2')" data-val="Moldy">Moldy</button>
+            <input type="hidden" class="quiz-input odd-input" id="group2" data-ans="Delectable">
+        </div>
+    </div>
 
-<p>5. Dairy refers to:</p>
-<input type="radio" name="q5" value="c"> milk products<br>
-<input type="radio" name="q5" value="a"> vegetables<br>
-<input type="radio" name="q5" value="b"> meat<br>
+    <div class="section">
+        <h2>Part 4: Fill in the Blanks</h2>
+        <p>Type the correct word from the vocabulary list.</p>
+        
+        <p>1. If you leave meat in the freezer too long, it may get <input type="text" class="quiz-input" data-ans="freezer burn" placeholder="...">.</p>
+        
+        <p>2. Please <input type="text" class="quiz-input" data-ans="stir" placeholder="..."> the soup regularly so it doesn't burn at the bottom.</p>
+        
+        <p>3. Milk and yogurt are examples of <input type="text" class="quiz-input" data-ans="dairy" placeholder="..."> products.</p>
+    </div>
 
-<br>
-<button type="button" onclick="calculateScore()">Submit</button>
-</form>
+    <button class="btn-submit" onclick="checkAnswers()">Check My Score</button>
 
-<div id="result" class="score"></div>
-</div>
-
-<div class="section">
-<h2>Answers</h2>
-<button onclick="toggleAnswers()">Show / Hide Answers</button>
-<div id="answers" class="hidden">
-<p>1. small</p>
-<p>2. goes bad easily</p>
-<p>3. eat quickly</p>
-<p>4. strong and fresh</p>
-<p>5. milk products</p>
-</div>
-</div>
-
+    <div id="result-area">
+        <h2 id="score-text"></h2>
+        <p id="feedback-text"></p>
+        <button onclick="window.location.reload()" style="background:none; border:1px solid #aaa; cursor:pointer; padding:5px 10px;">Retry Test</button>
+    </div>
 </div>
 
 <script>
-function calculateScore() {
-let answers = {q1:"b", q2:"b", q3:"b", q4:"b", q5:"c"};
-let score = 0;
+    function selectOdd(btn, groupId) {
+        // Clear previous selections in this group
+        const buttons = btn.parentElement.querySelectorAll('button');
+        buttons.forEach(b => b.classList.remove('selected'));
+        
+        // Select this one
+        btn.classList.add('selected');
+        
+        // Set the hidden input value
+        document.getElementById(groupId).value = btn.getAttribute('data-val') || btn.getAttribute('data-ans');
+    }
 
-for (let q in answers) {
-let selected = document.querySelector('input[name="'+q+'"]:checked');
-if (selected && selected.value === answers[q]) {
-score++;
-}
-}
+    function checkAnswers() {
+        let score = 0;
+        let total = 0;
+        const inputs = document.querySelectorAll('.quiz-input');
 
-document.getElementById("result").innerHTML = "Your score: " + score + "/5";
-}
+        inputs.forEach(input => {
+            total++;
+            let userAns = "";
+            
+            // Handle different input types
+            if (input.type === "radio") {
+                const checked = document.querySelector(`input[name="${input.name}"]:checked`);
+                userAns = checked ? checked.value : "";
+            } else {
+                userAns = input.value.trim().toLowerCase();
+            }
 
-function toggleAnswers() {
-let ans = document.getElementById("answers");
-ans.classList.toggle("hidden");
-}
+            const correctAns = input.getAttribute('data-ans').toLowerCase();
+
+            if (userAns === correctAns) {
+                score++;
+                // Visual feedback for non-radio
+                if(input.type !== "hidden" && input.type !== "radio") input.style.borderColor = "var(--success)";
+            } else {
+                if(input.type !== "hidden" && input.type !== "radio") input.style.borderColor = "var(--error)";
+            }
+        });
+
+        // Display results
+        const resultArea = document.getElementById('result-area');
+        const scoreText = document.getElementById('score-text');
+        const feedbackText = document.getElementById('feedback-text');
+
+        resultArea.style.display = "block";
+        scoreText.innerText = `Your Score: ${score} / ${total}`;
+        
+        if (score === total) {
+            feedbackText.innerText = "Excellent! You've mastered this IELTS food vocabulary.";
+            feedbackText.className = "correct";
+        } else if (score > total / 2) {
+            feedbackText.innerText = "Good job! Review the ones you missed and try again.";
+            feedbackText.className = "";
+        } else {
+            feedbackText.innerText = "Keep practicing! IELTS success requires consistent vocabulary review.";
+            feedbackText.className = "incorrect";
+        }
+
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
 </script>
 
 </body>
