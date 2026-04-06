@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Vocabulary Practice: Food & Gastronomy</title>
+    <title>IELTS Food Vocabulary Mastery</title>
     <style>
         :root {
             --primary: #2a5d9a;
@@ -24,7 +24,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background: white;
             padding: 40px;
@@ -32,250 +32,294 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        h1 {
-            color: var(--primary);
-            text-align: center;
-            border-bottom: 3px solid var(--primary);
-            padding-bottom: 10px;
-        }
+        h1 { color: var(--primary); text-align: center; border-bottom: 3px solid var(--primary); padding-bottom: 10px; }
+        h2 { color: var(--accent); font-size: 1.3rem; border-left: 5px solid var(--accent); padding-left: 10px; margin-top: 30px; }
 
-        .section {
-            margin-bottom: 40px;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
+        .section { margin-bottom: 40px; padding: 20px; background: #fff; border: 1px solid #eee; border-radius: 8px; }
 
-        h2 {
-            color: var(--accent);
-            font-size: 1.2rem;
-            margin-top: 0;
-        }
+        /* Matching Styles */
+        .matching-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; gap: 20px; }
+        .matching-row p { flex: 2; margin: 0; }
+        select { flex: 1; padding: 8px; border-radius: 4px; border: 1px solid #ccc; }
 
-        /* Exercise Styles */
-        .matching-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            align-items: center;
-        }
+        /* Multiple Choice Styles */
+        .q-block { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed #ddd; }
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
 
-        select, input[type="text"] {
-            padding: 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            width: 100%;
-        }
+        /* Odd One Out Styles */
+        .odd-group { margin-bottom: 25px; }
+        .btn-odd { padding: 10px 20px; margin: 5px; border: 2px solid var(--primary); background: white; cursor: pointer; border-radius: 20px; transition: 0.2s; font-weight: bold; }
+        .btn-odd.selected { background: var(--primary); color: white; }
 
-        .option-group {
-            margin: 10px 0;
-        }
+        /* Fill in Blanks */
+        .fib-input { border: none; border-bottom: 2px solid var(--primary); padding: 2px 5px; width: 150px; text-align: center; font-weight: bold; color: var(--primary); }
+        .fib-input:focus { outline: none; border-bottom-color: var(--accent); }
 
-        .odd-one-out button {
-            margin: 5px;
-            padding: 10px 15px;
-            border: 1px solid var(--primary);
-            background: white;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: 0.3s;
-        }
+        .btn-submit { display: block; width: 100%; padding: 20px; background: var(--primary); color: white; border: none; border-radius: 8px; font-size: 1.2rem; cursor: pointer; font-weight: bold; margin-top: 40px; }
+        .btn-submit:hover { background: #1e4573; transform: translateY(-2px); }
 
-        .odd-one-out button.selected {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Results Area */
-        #result-area {
-            display: none;
-            margin-top: 30px;
-            padding: 20px;
-            background: #f0fff4;
-            border: 2px solid var(--success);
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .btn-submit {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .btn-submit:hover {
-            background: #1e4573;
-        }
-
-        .feedback {
-            font-weight: bold;
-            margin-top: 5px;
-            display: block;
-        }
-
-        .correct { color: var(--success); }
-        .incorrect { color: var(--error); }
+        #result-area { display: none; margin-top: 30px; padding: 30px; border-radius: 12px; text-align: center; }
+        .high-score { background: #d4edda; border: 2px solid var(--success); }
+        .low-score { background: #f8d7da; border: 2px solid var(--error); }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>IELTS Food Vocabulary Practice</h1>
-    <p>Test your knowledge of quantities, tastes, verbs, and conditions.</p>
+    <h1>IELTS Vocabulary Practice: Food</h1>
+    <p style="text-align:center">Complete all 28 tasks below to test your lexical resource.</p>
 
-    <div class="section" id="part1">
-        <h2>Part 1: Matching - Quantities</h2>
-        <p>Match the word to its definition.</p>
-        <div class="matching-grid">
-            <div>1. Deficient in quantity; lacking richness.</div>
-            <select class="quiz-input" data-ans="Meager">
-                <option value="">Select...</option>
-                <option value="Abundant">Abundant</option>
-                <option value="Meager">Meager</option>
-                <option value="Scant">Scant</option>
-            </select>
-
-            <div>2. Inadequate amount; barely enough.</div>
-            <select class="quiz-input" data-ans="Scant">
-                <option value="">Select...</option>
-                <option value="Plentiful">Plentiful</option>
-                <option value="Scant">Scant</option>
-                <option value="Generous">Generous</option>
-            </select>
+    <div class="section">
+        <h2>1. Matching: Definitions</h2>
+        <div id="matching-container">
+            <div class="matching-row">
+                <p>1. Existing in ample amounts; more than enough.</p>
+                <select class="quiz-input" data-ans="Plentiful">
+                    <option value="">Choose...</option>
+                    <option value="Plentiful">Plentiful</option>
+                    <option value="Meager">Meager</option>
+                    <option value="Soured">Soured</option>
+                </select>
+            </div>
+            <div class="matching-row">
+                <p>2. Dehydrated and discolored due to cold air exposure.</p>
+                <select class="quiz-input" data-ans="Freezer Burn">
+                    <option value="">Choose...</option>
+                    <option value="Spoilage">Spoilage</option>
+                    <option value="Freezer Burn">Freezer Burn</option>
+                    <option value="Moldy">Moldy</option>
+                </select>
+            </div>
+            <div class="matching-row">
+                <p>3. The state of being decayed or unfit for eating.</p>
+                <select class="quiz-input" data-ans="Spoilage">
+                    <option value="">Choose...</option>
+                    <option value="Astringent">Astringent</option>
+                    <option value="Spoilage">Spoilage</option>
+                    <option value="Dairy">Dairy</option>
+                </select>
+            </div>
+            <div class="matching-row">
+                <p>4. Plants with seed pods like lentils and beans.</p>
+                <select class="quiz-input" data-ans="Legumes">
+                    <option value="">Choose...</option>
+                    <option value="Grains">Grains</option>
+                    <option value="Legumes">Legumes</option>
+                    <option value="Poultry">Poultry</option>
+                </select>
+            </div>
+            <div class="matching-row">
+                <p>5. Having turned acidic due to bacteria growth.</p>
+                <select class="quiz-input" data-ans="Soured">
+                    <option value="">Choose...</option>
+                    <option value="Zesty">Zesty</option>
+                    <option value="Mild">Mild</option>
+                    <option value="Soured">Soured</option>
+                </select>
+            </div>
+            <div class="matching-row">
+                <p>6. Easily prone to decay if not refrigerated.</p>
+                <select class="quiz-input" data-ans="Perishable">
+                    <option value="">Choose...</option>
+                    <option value="Perishable">Perishable</option>
+                    <option value="Abundant">Abundant</option>
+                    <option value="Savory">Savory</option>
+                </select>
+            </div>
+            <div class="matching-row">
+                <p>7. To chew steadily and audibly.</p>
+                <select class="quiz-input" data-ans="Munch">
+                    <option value="">Choose...</option>
+                    <option value="Savor">Savor</option>
+                    <option value="Munch">Munch</option>
+                    <option value="Nibble">Nibble</option>
+                </select>
+            </div>
         </div>
     </div>
 
     <div class="section">
-        <h2>Part 2: Multiple Choice - Verbs & Tastes</h2>
-        <div class="question">
-            <p>1. To satisfy one's thirst by drinking is to ______.</p>
-            <div class="option-group">
-                <input type="radio" name="q1" value="Munch"> Munch<br>
-                <input type="radio" name="q1" value="Quench" class="quiz-input" data-ans="Quench"> Quench<br>
-                <input type="radio" name="q1" value="Savor"> Savor
+        <h2>2. Multiple Choice: Context</h2>
+        <div class="q-block">
+            <p>1. The chef's secret ingredient gave the soup a deep, salty, _______ flavor.</p>
+            <div class="options-grid">
+                <label><input type="radio" name="m1" value="Savory" class="quiz-input" data-ans="Savory"> Savory</label>
+                <label><input type="radio" name="m1" value="Bitter"> Bitter</label>
             </div>
         </div>
-        <div class="question">
-            <p>2. A taste that is sharp, not sweet, and often found in dark chocolate is ______.</p>
-            <div class="option-group">
-                <input type="radio" name="q2" value="Bitter" class="quiz-input" data-ans="Bitter"> Bitter<br>
-                <input type="radio" name="q2" value="Zesty"> Zesty<br>
-                <input type="radio" name="q2" value="Savory"> Savory
+        <div class="q-block">
+            <p>2. We were so hungry we _______ the entire meal in minutes.</p>
+            <div class="options-grid">
+                <label><input type="radio" name="m2" value="Devoured" class="quiz-input" data-ans="Devoured"> Devoured</label>
+                <label><input type="radio" name="m2" value="Nibbled"> Nibbled</label>
             </div>
         </div>
-    </div>
-
-    <div class="section odd-one-out">
-        <h2>Part 3: Odd One Out</h2>
-        <p>Select the word that does NOT belong in the group.</p>
-        
-        <div>
-            <p>1. Which is not a type of protein/source?</p>
-            <button type="button" onclick="selectOdd(this, 'group1')" data-val="Legumes">Legumes</button>
-            <button type="button" onclick="selectOdd(this, 'group1')" data-val="Poultry">Poultry</button>
-            <button type="button" onclick="selectOdd(this, 'group1', true)" data-ans="Astringent">Astringent</button>
-            <input type="hidden" class="quiz-input odd-input" id="group1" data-ans="Astringent">
+        <div class="q-block">
+            <p>3. This lemon dressing is incredibly _______ and refreshing.</p>
+            <div class="options-grid">
+                <label><input type="radio" name="m3" value="Astringent"> Astringent</label>
+                <label><input type="radio" name="m3" value="Zesty" class="quiz-input" data-ans="Zesty"> Zesty</label>
+            </div>
         </div>
-
-        <div style="margin-top:20px">
-            <p>2. Which is not related to spoiled food?</p>
-            <button type="button" onclick="selectOdd(this, 'group2')" data-val="Soured">Soured</button>
-            <button type="button" onclick="selectOdd(this, 'group2', true)" data-ans="Delectable">Delectable</button>
-            <button type="button" onclick="selectOdd(this, 'group2')" data-val="Moldy">Moldy</button>
-            <input type="hidden" class="quiz-input odd-input" id="group2" data-ans="Delectable">
+        <div class="q-block">
+            <p>4. You should _______ each bite of this expensive chocolate cake.</p>
+            <div class="options-grid">
+                <label><input type="radio" name="m4" value="Savor" class="quiz-input" data-ans="Savor"> Savor</label>
+                <label><input type="radio" name="m4" value="Swallow"> Swallow</label>
+            </div>
+        </div>
+        <div class="q-block">
+            <p>5. If you add the butter to the hot pan, it will _______ quickly.</p>
+            <div class="options-grid">
+                <label><input type="radio" name="m5" value="Stir"> Stir</label>
+                <label><input type="radio" name="m5" value="Melt" class="quiz-input" data-ans="Melt"> Melt</label>
+            </div>
+        </div>
+        <div class="q-block">
+            <p>6. Green tea can have a(n) _______ quality that dries the mouth.</p>
+            <div class="options-grid">
+                <label><input type="radio" name="m6" value="Astringent" class="quiz-input" data-ans="Astringent"> Astringent</label>
+                <label><input type="radio" name="m6" value="Mild"> Mild</label>
+            </div>
+        </div>
+        <div class="q-block">
+            <p>7. The restaurant offers a menu designed to please every ______.</p>
+            <div class="options-grid">
+                <label><input type="radio" name="m7" value="Palate" class="quiz-input" data-ans="Palate"> Palate</label>
+                <label><input type="radio" name="m7" value="Seafood"> Seafood</label>
+            </div>
         </div>
     </div>
 
     <div class="section">
-        <h2>Part 4: Fill in the Blanks</h2>
-        <p>Type the correct word from the vocabulary list.</p>
+        <h2>3. Odd One Out</h2>
+        <p>Identify the word that belongs to a <i>different</i> category.</p>
         
-        <p>1. If you leave meat in the freezer too long, it may get <input type="text" class="quiz-input" data-ans="freezer burn" placeholder="...">.</p>
-        
-        <p>2. Please <input type="text" class="quiz-input" data-ans="stir" placeholder="..."> the soup regularly so it doesn't burn at the bottom.</p>
-        
-        <p>3. Milk and yogurt are examples of <input type="text" class="quiz-input" data-ans="dairy" placeholder="..."> products.</p>
+        <div class="odd-group">
+            <p>1. Type of Food Source:</p>
+            <button class="btn-odd" onclick="sel(this, 'o1')" data-val="Poultry">Poultry</button>
+            <button class="btn-odd" onclick="sel(this, 'o1')" data-val="Seafood">Seafood</button>
+            <button class="btn-odd" onclick="sel(this, 'o1')" data-val="Zesty">Zesty</button>
+            <input type="hidden" class="quiz-input" id="o1" data-ans="Zesty">
+        </div>
+
+        <div class="odd-group">
+            <p>2. Food Quantity:</p>
+            <button class="btn-odd" onclick="sel(this, 'o2')" data-val="Abundant">Abundant</button>
+            <button class="btn-odd" onclick="sel(this, 'o2')" data-val="Stir">Stir</button>
+            <button class="btn-odd" onclick="sel(this, 'o2')" data-val="Meager">Meager</button>
+            <input type="hidden" class="quiz-input" id="o2" data-ans="Stir">
+        </div>
+
+        <div class="odd-group">
+            <p>3. Food Verbs:</p>
+            <button class="btn-odd" onclick="sel(this, 'o3')" data-val="Munch">Munch</button>
+            <button class="btn-odd" onclick="sel(this, 'o3')" data-val="Nibble">Nibble</button>
+            <button class="btn-odd" onclick="sel(this, 'o3')" data-val="Moldy">Moldy</button>
+            <input type="hidden" class="quiz-input" id="o3" data-ans="Moldy">
+        </div>
+
+        <div class="odd-group">
+            <p>4. Negative Conditions:</p>
+            <button class="btn-odd" onclick="sel(this, 'o4')" data-val="Delectable">Delectable</button>
+            <button class="btn-odd" onclick="sel(this, 'o4')" data-val="Soured">Soured</button>
+            <button class="btn-odd" onclick="sel(this, 'o4')" data-val="Spoilage">Spoilage</button>
+            <input type="hidden" class="quiz-input" id="o4" data-ans="Delectable">
+        </div>
+
+        <div class="odd-group">
+            <p>5. Grains & Staples:</p>
+            <button class="btn-odd" onclick="sel(this, 'o5')" data-val="Rice">Rice</button>
+            <button class="btn-odd" onclick="sel(this, 'o5')" data-val="Wheat">Wheat</button>
+            <button class="btn-odd" onclick="sel(this, 'o5')" data-val="Dairy">Dairy</button>
+            <input type="hidden" class="quiz-input" id="o5" data-ans="Dairy">
+        </div>
+
+        <div class="odd-group">
+            <p>6. Taste Profiles:</p>
+            <button class="btn-odd" onclick="sel(this, 'o6')" data-val="Bitter">Bitter</button>
+            <button class="btn-odd" onclick="sel(this, 'o6')" data-val="Scant">Scant</button>
+            <button class="btn-odd" onclick="sel(this, 'o6')" data-val="Savory">Savory</button>
+            <input type="hidden" class="quiz-input" id="o6" data-ans="Scant">
+        </div>
+
+        <div class="odd-group">
+            <p>7. Actions of Consumption:</p>
+            <button class="btn-odd" onclick="sel(this, 'o7')" data-val="Quench">Quench</button>
+            <button class="btn-odd" onclick="sel(this, 'o7')" data-val="Swallow">Swallow</button>
+            <button class="btn-odd" onclick="sel(this, 'o7')" data-val="Grains">Grains</button>
+            <input type="hidden" class="quiz-input" id="o7" data-ans="Grains">
+        </div>
     </div>
 
-    <button class="btn-submit" onclick="checkAnswers()">Check My Score</button>
+    <div class="section">
+        <h2>4. Fill in the Blanks</h2>
+        <p>Complete the sentences using the exact words from the provided vocabulary.</p>
+        
+        <p>1. We enjoyed a <input type="text" class="quiz-input fib-input" data-ans="generous"> portion of pasta that left us completely full.</p>
+        <p>2. Before baking, you must <input type="text" class="quiz-input fib-input" data-ans="stir"> the wet and dry ingredients together.</p>
+        <p>3. If you leave bread in a damp place, it will quickly become <input type="text" class="quiz-input fib-input" data-ans="moldy">.</p>
+        <p>4. After the long marathon, I needed a cold drink to <input type="text" class="quiz-input fib-input" data-ans="quench"> my thirst.</p>
+        <p>5. Chicken and turkey are categorized as <input type="text" class="quiz-input fib-input" data-ans="poultry">.</p>
+        <p>6. There was a(n) <input type="text" class="quiz-input fib-input" data-ans="abundant"> supply of fruit at the market this morning.</p>
+        <p>7. The dessert was absolutely <input type="text" class="quiz-input fib-input" data-ans="delectable">; everyone wanted seconds.</p>
+    </div>
+
+    <button class="btn-submit" onclick="checkAll()">View My Score & Answers</button>
 
     <div id="result-area">
-        <h2 id="score-text"></h2>
-        <p id="feedback-text"></p>
-        <button onclick="window.location.reload()" style="background:none; border:1px solid #aaa; cursor:pointer; padding:5px 10px;">Retry Test</button>
+        <h2 id="final-score"></h2>
+        <p id="final-msg"></p>
+        <button onclick="window.location.reload()" style="background:#666; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer">Restart Practice</button>
     </div>
 </div>
 
 <script>
-    function selectOdd(btn, groupId) {
-        // Clear previous selections in this group
-        const buttons = btn.parentElement.querySelectorAll('button');
-        buttons.forEach(b => b.classList.remove('selected'));
-        
-        // Select this one
+    function sel(btn, id) {
+        const parent = btn.parentElement;
+        parent.querySelectorAll('.btn-odd').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
-        
-        // Set the hidden input value
-        document.getElementById(groupId).value = btn.getAttribute('data-val') || btn.getAttribute('data-ans');
+        document.getElementById(id).value = btn.getAttribute('data-val');
     }
 
-    function checkAnswers() {
+    function checkAll() {
         let score = 0;
-        let total = 0;
         const inputs = document.querySelectorAll('.quiz-input');
-
+        
         inputs.forEach(input => {
-            total++;
-            let userAns = "";
-            
-            // Handle different input types
+            let userVal = "";
             if (input.type === "radio") {
                 const checked = document.querySelector(`input[name="${input.name}"]:checked`);
-                userAns = checked ? checked.value : "";
+                if (checked && checked.getAttribute('data-ans')) userVal = checked.value;
+                else if (checked) return; // Skip non-answer radios
+                else return;
             } else {
-                userAns = input.value.trim().toLowerCase();
+                userVal = input.value.trim().toLowerCase();
             }
 
-            const correctAns = input.getAttribute('data-ans').toLowerCase();
-
-            if (userAns === correctAns) {
+            const correctVal = input.getAttribute('data-ans').toLowerCase();
+            
+            if (userVal === correctVal) {
                 score++;
-                // Visual feedback for non-radio
-                if(input.type !== "hidden" && input.type !== "radio") input.style.borderColor = "var(--success)";
+                if(input.type !== "hidden") input.style.borderColor = "var(--success)";
             } else {
-                if(input.type !== "hidden" && input.type !== "radio") input.style.borderColor = "var(--error)";
+                if(input.type !== "hidden") input.style.borderColor = "var(--error)";
             }
         });
 
-        // Display results
-        const resultArea = document.getElementById('result-area');
-        const scoreText = document.getElementById('score-text');
-        const feedbackText = document.getElementById('feedback-text');
-
-        resultArea.style.display = "block";
-        scoreText.innerText = `Your Score: ${score} / ${total}`;
+        const res = document.getElementById('result-area');
+        res.style.display = "block";
+        const percent = (score / 28) * 100;
         
-        if (score === total) {
-            feedbackText.innerText = "Excellent! You've mastered this IELTS food vocabulary.";
-            feedbackText.className = "correct";
-        } else if (score > total / 2) {
-            feedbackText.innerText = "Good job! Review the ones you missed and try again.";
-            feedbackText.className = "";
-        } else {
-            feedbackText.innerText = "Keep practicing! IELTS success requires consistent vocabulary review.";
-            feedbackText.className = "incorrect";
-        }
-
+        document.getElementById('final-score').innerText = `Total Score: ${score} / 28 (${Math.round(percent)}%)`;
+        res.className = percent >= 70 ? 'high-score' : 'low-score';
+        
+        document.getElementById('final-msg').innerText = percent >= 70 ? 
+            "Excellent Lexical Resource! You're ready for the IELTS Speaking/Writing food topics." : 
+            "Keep studying! Review the vocabulary definitions and try the quiz again.";
+            
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 </script>
-
 </body>
 </html>
