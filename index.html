@@ -3,370 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IELTS Food Vocabulary Mastery</title>
+    <title>IELTS Food Vocabulary Worksheet</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #4a7c44;
-            --secondary: #f9f7f2;
+            --primary: #4a6741;
+            --secondary: #f4f7f1;
             --accent: #d97706;
             --correct: #dcfce7;
             --correct-border: #22c55e;
             --wrong: #fee2e2;
             --wrong-border: #ef4444;
-            --text: #1f2937;
+            --text: #374151;
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--secondary);
             color: var(--text);
+            line-height: 1.6;
             margin: 0;
             padding: 20px;
-            display: flex;
-            justify-content: center;
         }
 
         .container {
             max-width: 900px;
-            width: 100%;
+            margin: 0 auto;
             background: white;
             padding: 40px;
-            border-radius: 20px;
+            border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
         }
 
-        header { text-align: center; margin-bottom: 40px; }
-        h1 { color: var(--primary); font-size: 2.5rem; margin-bottom: 10px; }
-        h2 { color: var(--accent); border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 40px; }
-        h3 { color: var(--primary); font-size: 1.1rem; margin-top: 25px; }
+        h1 { color: var(--primary); text-align: center; border-bottom: 3px solid var(--accent); padding-bottom: 10px; }
+        h2 { color: var(--accent); margin-top: 30px; border-left: 5px solid var(--primary); padding-left: 10px; }
+        h3 { font-size: 1.1rem; color: var(--primary); margin-bottom: 10px; }
 
-        .section { margin-bottom: 30px; }
+        .section { margin-bottom: 40px; }
         
         /* Grid for Matching */
         .matching-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 15px;
-            background: #fdfdfd;
-            padding: 15px;
-            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
-        .q-row {
+        .item-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 12px;
-            border: 1px solid #eee;
+            background: #fafafa;
+            padding: 10px 15px;
             border-radius: 8px;
-            background: white;
-            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            transition: all 0.3s;
         }
 
         select, input[type="text"] {
-            padding: 6px 10px;
-            border: 2px solid #e5e7eb;
+            padding: 8px;
+            border: 2px solid #ddd;
             border-radius: 6px;
-            font-size: 0.95rem;
+            font-size: 14px;
             outline: none;
         }
 
         /* Multiple Choice */
-        .mcq-box {
-            padding: 15px;
+        .mcq-block {
+            background: #fff;
             border: 1px solid #eee;
+            padding: 15px;
             border-radius: 10px;
             margin-bottom: 15px;
         }
 
-        .options { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-        .option-label {
+        .options-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+        .option {
             padding: 10px;
             border: 1px solid #e5e7eb;
             border-radius: 6px;
             cursor: pointer;
-            transition: background 0.2s;
         }
-        .option-label:hover { background: #f3f4f6; }
 
-        /* Animations */
+        /* Feedback Colors */
         .is-correct { background-color: var(--correct) !important; border-color: var(--correct-border) !important; animation: pulse 0.5s; }
         .is-wrong { background-color: var(--wrong) !important; border-color: var(--wrong-border) !important; animation: shakeX 0.5s; }
 
-        /* Score Overlay */
-        #score-screen {
+        /* Final Score Area */
+        #score-display {
             display: none;
             text-align: center;
             margin-top: 50px;
             padding: 30px;
             background: var(--primary);
             color: white;
-            border-radius: 15px;
+            border-radius: 12px;
         }
 
-        .btn-submit {
+        .submit-btn {
             display: block;
             width: 100%;
             padding: 20px;
             background: var(--accent);
             color: white;
             border: none;
-            border-radius: 12px;
-            font-size: 1.3rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 40px;
-            transition: transform 0.2s, background 0.2s;
+            transition: transform 0.2s;
         }
 
-        .btn-submit:hover { background: #b45309; transform: translateY(-2px); }
-
-        .gap-sentence { margin-bottom: 12px; line-height: 2; }
+        .submit-btn:hover { transform: translateY(-2px); background: #b45309; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <h1>IELTS Vocabulary: Food</h1>
-        <p>Complete all sections to test your knowledge.</p>
-    </header>
+    <h1>IELTS Vocabulary: Food</h1>
+    <p style="text-align:center">Objective: To practice and consolidate understanding of food-related vocabulary.</p>
 
-    <section class="section">
+    <div class="section">
         <h2>Part 1: Matching</h2>
         
         <h3>A. Food Quantities</h3>
         <div class="matching-grid">
-            <div class="q-row" data-ans="d">1. Abundant <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="a">2. Scant <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="e">3. Generous <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="c">4. Meager <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="b">5. Plentiful <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="d">1. Abundant <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="a">2. Scant <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="e">3. Generous <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="c">4. Meager <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="b">5. Plentiful <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
         </div>
 
         <h3>B. Eating and Drinking</h3>
         <div class="matching-grid">
-            <div class="q-row" data-ans="c">6. Savory <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="b">7. Palate <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="d">8. Quench <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="a">9. Munch <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="e">10. Swallow <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="c">6. Savory <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="b">7. Palate <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="d">8. Quench <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="a">9. Munch <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="e">10. Swallow <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
         </div>
 
         <h3>C. Food Condition</h3>
         <div class="matching-grid">
-            <div class="q-row" data-ans="c">11. Spoilage <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="a">12. Perishable <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="b">13. Moldy <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="d">14. Freezer burn <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="e">15. Soured <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="c">11. Spoilage <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="a">12. Perishable <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="b">13. Moldy <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="d">14. Freezer burn <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="e">15. Soured <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
         </div>
 
         <h3>D. Food Verbs</h3>
         <div class="matching-grid">
-            <div class="q-row" data-ans="c">16. Savor <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="a">17. Devour <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="e">18. Nibble <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="d">19. Melt <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="b">20. Stir <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="c">16. Savor <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="a">17. Devour <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="e">18. Nibble <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="d">19. Melt <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="b">20. Stir <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
         </div>
 
         <h3>E. Food Taste</h3>
         <div class="matching-grid">
-            <div class="q-row" data-ans="b">21. Delectable <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="c">22. Bitter <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="d">23. Zesty <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="a">24. Mild <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="e">25. Astringent <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="b">21. Delectable <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="c">22. Bitter <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="d">23. Zesty <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="a">24. Mild <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="e">25. Astringent <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
         </div>
 
         <h3>F. Food Types</h3>
         <div class="matching-grid">
-            <div class="q-row" data-ans="b">26. Legumes <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="d">27. Grains <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="a">28. Dairy <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="c">29. Poultry <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
-            <div class="q-row" data-ans="e">30. Seafood <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="b">26. Legumes <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="d">27. Grains <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="a">28. Dairy <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="c">29. Poultry <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
+            <div class="item-row" data-ans="e">30. Seafood <select><option value="">-</option><option value="a">a</option><option value="b">b</option><option value="c">c</option><option value="d">d</option><option value="e">e</option></select></div>
         </div>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="section">
         <h2>Part 2: Multiple Choice</h2>
-        <div class="mcq-box" data-ans="b">
+        <div class="mcq-block" data-ans="b">
             <p>1. If food is <b>meager</b>, it is:</p>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="m1" value="a"> a. large</label>
-                <label class="option-label"><input type="radio" name="m1" value="b"> b. small</label>
-                <label class="option-label"><input type="radio" name="m1" value="c"> c. sweet</label>
+            <div class="options-list">
+                <label><input type="radio" name="q1" value="a"> a. large</label>
+                <label><input type="radio" name="q1" value="b"> b. small</label>
+                <label><input type="radio" name="q1" value="c"> c. sweet</label>
             </div>
         </div>
-        <div class="mcq-box" data-ans="b">
+        <div class="mcq-block" data-ans="b">
             <p>2. If something is <b>perishable</b>, it:</p>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="m2" value="a"> a. lasts forever</label>
-                <label class="option-label"><input type="radio" name="m2" value="b"> b. goes bad easily</label>
-                <label class="option-label"><input type="radio" name="m2" value="c"> c. tastes bitter</label>
+            <div class="options-list">
+                <label><input type="radio" name="q2" value="a"> a. lasts forever</label>
+                <label><input type="radio" name="q2" value="b"> b. goes bad easily</label>
+                <label><input type="radio" name="q2" value="c"> c. tastes bitter</label>
             </div>
         </div>
-        <div class="mcq-box" data-ans="b">
+        <div class="mcq-block" data-ans="b">
             <p>3. If you <b>devour</b> food, you eat:</p>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="m3" value="a"> a. slowly</label>
-                <label class="option-label"><input type="radio" name="m3" value="b"> b. quickly</label>
-                <label class="option-label"><input type="radio" name="m3" value="c"> c. carefully</label>
+            <div class="options-list">
+                <label><input type="radio" name="q3" value="a"> a. slowly</label>
+                <label><input type="radio" name="q3" value="b"> b. quickly</label>
+                <label><input type="radio" name="q3" value="c"> c. carefully</label>
             </div>
         </div>
-        <div class="mcq-box" data-ans="b">
+        <div class="mcq-block" data-ans="b">
             <p>4. A <b>zesty</b> flavor is:</p>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="m4" value="a"> a. dull</label>
-                <label class="option-label"><input type="radio" name="m4" value="b"> b. strong and fresh</label>
-                <label class="option-label"><input type="radio" name="m4" value="c"> c. dry</label>
+            <div class="options-list">
+                <label><input type="radio" name="q4" value="a"> a. dull</label>
+                <label><input type="radio" name="q4" value="b"> b. strong and fresh</label>
+                <label><input type="radio" name="q4" value="c"> c. dry</label>
             </div>
         </div>
-        <div class="mcq-box" data-ans="c">
+        <div class="mcq-block" data-ans="c">
             <p>5. <b>Dairy</b> refers to:</p>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="m5" value="a"> a. vegetables</label>
-                <label class="option-label"><input type="radio" name="m5" value="b"> b. meat</label>
-                <label class="option-label"><input type="radio" name="m5" value="c"> c. milk products</label>
+            <div class="options-list">
+                <label><input type="radio" name="q5" value="a"> a. vegetables</label>
+                <label><input type="radio" name="q5" value="b"> b. meat</label>
+                <label><input type="radio" name="q5" value="c"> c. milk products</label>
             </div>
         </div>
-        <div class="mcq-box" data-ans="b">
+        <div class="mcq-block" data-ans="b">
             <p>6. If food is <b>moldy</b>, it is:</p>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="m6" value="a"> a. fresh</label>
-                <label class="option-label"><input type="radio" name="m6" value="b"> b. spoiled</label>
-                <label class="option-label"><input type="radio" name="m6" value="c"> c. frozen</label>
+            <div class="options-list">
+                <label><input type="radio" name="q6" value="a"> a. fresh</label>
+                <label><input type="radio" name="q6" value="b"> b. spoiled</label>
+                <label><input type="radio" name="q6" value="c"> c. frozen</label>
             </div>
         </div>
-        <div class="mcq-box" data-ans="c">
+        <div class="mcq-block" data-ans="c">
             <p>7. To <b>quench</b> thirst means to:</p>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="m7" value="a"> a. increase it</label>
-                <label class="option-label"><input type="radio" name="m7" value="b"> b. ignore it</label>
-                <label class="option-label"><input type="radio" name="m7" value="c"> c. satisfy it</label>
+            <div class="options-list">
+                <label><input type="radio" name="q7" value="a"> a. increase it</label>
+                <label><input type="radio" name="q7" value="b"> b. ignore it</label>
+                <label><input type="radio" name="q7" value="c"> c. satisfy it</label>
             </div>
         </div>
-        <div class="mcq-box" data-ans="b">
+        <div class="mcq-block" data-ans="b">
             <p>8. <b>Astringent</b> taste:</p>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="m8" value="a"> a. sweet</label>
-                <label class="option-label"><input type="radio" name="m8" value="b"> b. dries your mouth</label>
-                <label class="option-label"><input type="radio" name="m8" value="c"> c. salty</label>
+            <div class="options-list">
+                <label><input type="radio" name="q8" value="a"> a. sweet</label>
+                <label><input type="radio" name="q8" value="b"> b. dries your mouth</label>
+                <label><input type="radio" name="q8" value="c"> c. salty</label>
             </div>
         </div>
-        <div class="mcq-box" data-ans="c">
+        <div class="mcq-block" data-ans="c">
             <p>9. If food is <b>abundant</b>, there is:</p>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="m9" value="a"> a. very little</label>
-                <label class="option-label"><input type="radio" name="m9" value="b"> b. none</label>
-                <label class="option-label"><input type="radio" name="m9" value="c"> c. a lot</label>
+            <div class="options-list">
+                <label><input type="radio" name="q9" value="a"> a. very little</label>
+                <label><input type="radio" name="q9" value="b"> b. none</label>
+                <label><input type="radio" name="q9" value="c"> c. a lot</label>
             </div>
         </div>
-        <div class="mcq-box" data-ans="b">
+        <div class="mcq-block" data-ans="b">
             <p>10. To <b>nibble</b> means to:</p>
-            <div class="options">
-                <label class="option-label"><input type="radio" name="m10" value="a"> a. eat big bites</label>
-                <label class="option-label"><input type="radio" name="m10" value="b"> b. eat small bites</label>
-                <label class="option-label"><input type="radio" name="m10" value="c"> c. drink quickly</label>
+            <div class="options-list">
+                <label><input type="radio" name="q10" value="a"> a. eat big bites</label>
+                <label><input type="radio" name="q10" value="b"> b. eat small bites</label>
+                <label><input type="radio" name="q10" value="c"> c. drink quickly</label>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="section">
         <h2>Part 3: Gap Fill</h2>
         <p><i>Word bank: savor, grains, perishable, zesty, soured, savory, mild, munch, scant, plentiful</i></p>
-        <div class="gap-sentence" data-ans="plentiful">1. The farmer had a <input type="text"> harvest this year.</div>
-        <div class="gap-sentence" data-ans="soured">2. The milk has <input type="text"> and cannot be used.</div>
-        <div class="gap-sentence" data-ans="munch">3. She likes to <input type="text"> on snacks while watching TV.</div>
-        <div class="gap-sentence" data-ans="savory">4. The steak was very <input type="text"> and delicious.</div>
-        <div class="gap-sentence" data-ans="scant">5. There was only a <input type="text"> amount of food left.</div>
-        <div class="gap-sentence" data-ans="perishable">6. This fruit is <input type="text">, so keep it in the fridge.</div>
-        <div class="gap-sentence" data-ans="savor">7. He took time to <input type="text"> the dessert slowly.</div>
-        <div class="gap-sentence" data-ans="zesty">8. The tea had a slightly <input type="text"> taste.</div>
-        <div class="gap-sentence" data-ans="mild">9. The soup is too strong; I prefer something more <input type="text">.</div>
-        <div class="gap-sentence" data-ans="grains">10. Rice and wheat are types of <input type="text">.</div>
-    </section>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="plentiful">1. The farmer had a <input type="text"> harvest this year.</div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="soured">2. The milk has <input type="text"> and cannot be used.</div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="munch">3. She likes to <input type="text"> on snacks while watching TV.</div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="savory">4. The steak was very <input type="text"> and delicious.</div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="scant">5. There was only a <input type="text"> amount of food left.</div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="perishable">6. This fruit is <input type="text">, so keep it in the fridge.</div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="savor">7. He took time to <input type="text"> the dessert slowly.</div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="zesty">8. The tea had a slightly <input type="text"> taste.</div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="mild">9. The soup is too strong; I prefer something more <input type="text">.</div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="grains">10. Rice and wheat are types of <input type="text">.</div>
+    </div>
 
-    <section class="section">
+    <div class="section">
         <h2>Part 4: Odd One Out</h2>
-        <p>Type the word that does NOT belong.</p>
-        <div class="gap-sentence" data-ans="meager">1. abundant – plentiful – meager – generous: <input type="text"></div>
-        <div class="gap-sentence" data-ans="stir">2. nibble – devour – stir – munch: <input type="text"></div>
-        <div class="gap-sentence" data-ans="bitter">3. dairy – grains – poultry – bitter: <input type="text"></div>
-        <div class="gap-sentence" data-ans="legumes">4. zesty – mild – astringent – legumes: <input type="text"></div>
-        <div class="gap-sentence" data-ans="swallow">5. moldy – spoilage – perishable – swallow: <input type="text"></div>
-    </section>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="meager">1. abundant - plentiful - meager - generous <input type="text" placeholder="Odd word"></div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="stir">2. nibble - devour - stir - munch <input type="text" placeholder="Odd word"></div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="bitter">3. dairy - grains - poultry - bitter <input type="text" placeholder="Odd word"></div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="legumes">4. zesty - mild - astringent - legumes <input type="text" placeholder="Odd word"></div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="swallow">5. moldy - spoilage - perishable - swallow <input type="text" placeholder="Odd word"></div>
+    </div>
 
-    <section class="section">
+    <div class="section">
         <h2>Part 5: Quick Check</h2>
-        <div class="gap-sentence" data-ans="perishable">1. Food that goes bad quickly: <input type="text"></div>
-        <div class="gap-sentence" data-ans="devour">2. Eating very fast: <input type="text"></div>
-        <div class="gap-sentence" data-ans="delectable">3. Very delicious: <input type="text"></div>
-        <div class="gap-sentence" data-ans="astringent">4. A dry mouth taste: <input type="text"></div>
-        <div class="gap-sentence" data-ans="seafood">5. Food from the ocean: <input type="text"></div>
-    </section>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="perishable">1. Food that goes bad quickly: <input type="text"></div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="devour">2. Eating very fast: <input type="text"></div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="delectable">3. Very delicious: <input type="text"></div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="astringent">4. A dry mouth taste: <input type="text"></div>
+        <div class="item-row" style="display:block; margin-bottom:10px" data-ans="seafood">5. Food from the ocean: <input type="text"></div>
+    </div>
 
-    <button class="btn-submit" onclick="gradeWorksheet()">Calculate My Overall Score</button>
+    <button class="submit-btn" onclick="checkAnswers()">Calculate My Overall Score</button>
 
-    <div id="score-screen" class="animate__animated">
-        <h2 style="color:white; border:none;">Final Result</h2>
-        <div id="result-text" style="font-size: 3rem; margin-bottom: 10px;">0%</div>
-        <p id="commentary"></p>
-        <button onclick="location.reload()" style="background: white; color: var(--primary); padding: 10px 20px; border:none; border-radius: 8px; cursor:pointer; margin-top:20px;">Restart Quiz</button>
+    <div id="score-display" class="animate__animated">
+        <h2 style="color:white; border:none; margin:0">Worksheet Complete!</h2>
+        <p id="total-text" style="font-size: 2.5rem; font-weight: bold; margin: 10px 0;">0 / 0</p>
+        <p id="feedback-msg" style="font-size: 1.1rem;"></p>
+        <button onclick="location.reload()" style="background: white; color: var(--primary); padding: 10px 20px; border-radius: 5px; border:none; cursor:pointer; margin-top:15px">Restart Test</button>
     </div>
 </div>
 
 <script>
-    function gradeWorksheet() {
+    function checkAnswers() {
         let score = 0;
         let total = 0;
 
-        // 1. Grade Select Boxes (Matching)
-        document.querySelectorAll('.q-row').forEach(row => {
+        // 1. Check Matching and Inputs
+        const items = document.querySelectorAll('.item-row');
+        items.forEach(item => {
             total++;
-            const val = row.querySelector('select').value;
-            const ans = row.getAttribute('data-ans');
-            if(val === ans) { score++; mark(row, true); } else { mark(row, false); }
+            const correctAns = item.getAttribute('data-ans').toLowerCase();
+            const input = item.querySelector('select, input');
+            const userAns = input.value.trim().toLowerCase();
+
+            if (userAns === correctAns) {
+                score++;
+                item.classList.add('is-correct', 'animate__animated');
+                item.classList.remove('is-wrong');
+            } else {
+                item.classList.add('is-wrong', 'animate__animated');
+                item.classList.remove('is-correct');
+            }
         });
 
-        // 2. Grade Radio Buttons (MCQ)
-        document.querySelectorAll('.mcq-box').forEach(box => {
+        // 2. Check MCQs
+        const mcqs = document.querySelectorAll('.mcq-block');
+        mcqs.forEach(block => {
             total++;
-            const selected = box.querySelector('input[type="radio"]:checked');
-            const ans = box.getAttribute('data-ans');
-            if(selected && selected.value === ans) { score++; mark(box, true); } else { mark(box, false); }
+            const correctAns = block.getAttribute('data-ans');
+            const selected = block.querySelector('input[type="radio"]:checked');
+            
+            if (selected && selected.value === correctAns) {
+                score++;
+                block.classList.add('is-correct', 'animate__animated');
+                block.classList.remove('is-wrong');
+            } else {
+                block.classList.add('is-wrong', 'animate__animated');
+                block.classList.remove('is-correct');
+            }
         });
 
-        // 3. Grade Text Inputs (Gap fill, Odd one out, Quick check)
-        document.querySelectorAll('.gap-sentence').forEach(sent => {
-            total++;
-            const val = sent.querySelector('input').value.trim().toLowerCase();
-            const ans = sent.getAttribute('data-ans').toLowerCase();
-            if(val === ans) { score++; mark(sent, true); } else { mark(sent, false); }
-        });
+        // Show Results
+        const display = document.getElementById('score-display');
+        const totalText = document.getElementById('total-text');
+        const feedback = document.getElementById('feedback-msg');
 
-        function mark(el, correct) {
-            el.classList.remove('is-correct', 'is-wrong', 'animate__animated');
-            void el.offsetWidth; // Trigger reflow
-            el.classList.add(correct ? 'is-correct' : 'is-wrong', 'animate__animated');
-        }
+        display.style.display = 'block';
+        display.classList.add('animate__fadeInUp');
+        totalText.innerText = `${score} / ${total}`;
 
-        // Show Final Score
-        const pct = Math.round((score / total) * 100);
-        const screen = document.getElementById('score-screen');
-        screen.style.display = 'block';
-        screen.classList.add('animate__fadeInUp');
-        document.getElementById('result-text').innerText = `${score} / ${total} (${pct}%)`;
-        
-        let msg = "";
-        if(pct === 100) msg = "Perfect Score! You're ready for the IELTS exam.";
-        else if(pct > 80) msg = "Excellent! You have a strong food vocabulary.";
-        else if(pct > 50) msg = "Good start, but review the red sections.";
-        else msg = "Keep studying! Try reviewing the definitions again.";
-        document.getElementById('commentary').innerText = msg;
+        let percentage = (score/total) * 100;
+        if (percentage === 100) feedback.innerText = "Masterful! You know your food vocabulary perfectly.";
+        else if (percentage >= 80) feedback.innerText = "Excellent work! You have a strong grasp of these terms.";
+        else if (percentage >= 50) feedback.innerText = "Good effort! Review the red sections and try again.";
+        else feedback.innerText = "Keep studying! Use the worksheet definitions to help you improve.";
 
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
